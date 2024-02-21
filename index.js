@@ -52,18 +52,11 @@ client.on('ready', () => {
 })
 
 client.on('messageCreate', async (msg) => {
-  console.log("Function called")
-  // console.log(msg.author)
   if (msg.author.bot) return;
-  console.log(msg)
-  if (msg.content === 'ping') {
-    msg.reply({
-      content: 'Pong!'
-    });
-  }
-  else if (msg.content === '') {
-    msg.reply('No message recieved')
-  }
+  
+  const { commandName, commandArgs } = decomposeCommand(msg.content)
+  
+  
 })
 
 
