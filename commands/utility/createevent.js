@@ -37,5 +37,6 @@ module.exports = {
     console.log(`Date: ${date}`)
     console.log(`Time: ${time}`)
     await interaction.reply(`Event created: ${name} on ${date[0]}/${date[1]}/${date[2]} at ${time[0]}:${time[1]}`)
+
   },
 }
