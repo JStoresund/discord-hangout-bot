@@ -12,7 +12,7 @@ module.exports = {
   async execute(interaction) {
     // const target = interaction.options.getUser('target');
 		const input = interaction.options.getString('input')
-    console.log(`Input: ${input}`)
+    // console.log(`Input: ${input}`)
 		await interaction.reply(`You wrote: ${input}`)
 		// await interaction.guild.members.ban(target);
   }
