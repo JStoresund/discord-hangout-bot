@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, italic } = require('@discordjs/builders')
+const { SlashCommandBuilder, italic, bold } = require('@discordjs/builders')
 const { REST } = require('@discordjs/rest')
 const { guildID } = require('../../config.json')
 const { createDiscordEvent } = require('../../event.js')
@@ -45,15 +45,16 @@ module.exports = {
     }
     let time = interaction.options.getString('time').split(':')
 
-    const description = interaction.options.getString('description') || 'No description provided.'
+    const description = interaction.options.getString('description') || undefined
 
-    const rest = new REST({ version: '10' }).setToken(process.env.TOKEN)
+    const startTime = new Date(date[2], date[0] - 1, date[1], time[0], time[1])
+    const endTime = new Date(date[2], date[0], date[1], time[0], time[1])
 
-    const startTime = new Date(2024, 3)
-    const endTime = new Date(2024, 4)
+    await createDiscordEvent(name, startTime.toISOString(), endTime.toISOString(), 'https://discord.com')
 
-    await createDiscordEvent(name, startTime, endTime, 'https://discord.com')
-
-    await interaction.reply(`Code finished running!`)
+    await interaction.reply(`Event ${bold(name)} created
+    \nIt will start at ${italic(startTime.toLocaleString())}
+    \nand end at ${italic(endTime.toLocaleString())}
+    \n\n${description ? `Description: ${italic(description)}` : ''}`)
   },
 }

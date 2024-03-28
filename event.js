@@ -18,8 +18,8 @@ module.exports = {
     const eventData = {
       name,
       entity_type: 3,
-      scheduled_start_time: startTime.toISOString(),
-      scheduled_end_time: endTime.toISOString(),
+      scheduled_start_time: startTime,
+      scheduled_end_time: endTime,
       privacy_level: 2,
       entity_metadata: {
         location: eventUrl,
